@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { endPointsService } from '../../_services/endPoints.service';
+import { Table } from 'react-bootstrap';
 
 const UsersList = () => {
 
@@ -36,17 +37,27 @@ const UsersList = () => {
         return (
             <div>
                 <h1>Liste des utilisateurs</h1>
-                <div className='parent'>
-                {users.map(user => (
-                <div className='card'>
-                    <p>{user.name}</p>
-                    <p>{user.username}</p>
-                    <p>{user.email}</p>
-                    <p>{user.address.street}</p>
-                    <p>{user.address.city}</p>
-                </div>
-                ))}
-                </div>
+                <Table striped bordered hover>
+                    <thead className='text-center'>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Pseudo</th>
+                            <th>Email</th>
+                            <th colSpan={2}>Adresse</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {users.map(user => (
+                        <tr>
+                            <td>{user.name}</td>
+                            <td>{user.username}</td>
+                            <td>{user.email}</td>
+                            <td>{user.address.street}</td>
+                            <td>{user.address.city}</td>
+                        </tr>
+                        ))}
+                    </tbody>
+                </Table>
             </div>
         );
     }

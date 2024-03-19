@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { endPointsService } from '../../_services/endPoints.service';
 import { Link } from 'react-router-dom';
+import { Button, Card } from 'react-bootstrap';
 
 const PostsList = () => {
 
@@ -37,13 +38,18 @@ const PostsList = () => {
         return (
             <div>
                 <h1>Liste des articles</h1>
-                {posts.map(post => (
-                <Link to={`/posts/show/${post.id}`}>
-                <div className="card">
-                    <p>{post.title}</p>
+                <div className='d-flex flex-wrap justify-content-around'>
+                    {posts.map(post => (
+                        <Card className='m-1'>
+                            <Card.Body>
+                                <Card.Title>{post.title}</Card.Title>
+                                <Button 
+                                    href={`/posts/show/${post.id}`} variant="primary">Lire l'article
+                                </Button>
+                            </Card.Body>
+                        </Card>
+                    ))}
                 </div>
-                </Link>
-                ))}
             </div>
         );
     }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { endPointsService } from '../../_services/endPoints.service';
+import { Button, Card } from 'react-bootstrap';
 
 const PostShow = () => {
 
@@ -37,12 +38,16 @@ const PostShow = () => {
         )
     } else {
         return (
-            <div>
-                <div>
-                    <p>{post.title}</p>
-                    <p>{post.body}</p>
-                </div>
-            </div>
+            <Card className='w-50 m-auto'>
+                <Card.Img src="https://picsum.photos/700/300" />
+                <Card.Body>
+                    <Card.Title>{post.title}</Card.Title>
+                    <Card.Text>
+                        {post.body}
+                    </Card.Text>
+                    <Button href="/posts/list" variant="primary">Retour à la liste</Button>
+                </Card.Body>
+            </Card>
         );
     }
 
